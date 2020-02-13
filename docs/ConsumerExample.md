@@ -3,7 +3,8 @@ id: consumer-example
 title: Consumer
 ---
 
-The following example assumes that you are using the local Kafka configuration described in [Running Kafka in Development](DockerLocal.md).
+The following example assumes that you are using the local Kafka configuration described in
+[Running Kafka in Development](DockerLocal.md).
 
 ```javascript
 const fs = require('fs')
@@ -67,7 +68,9 @@ signalTraps.map(type => {
 
 ## <a name="ssl-and-sasl-authentication"></a> SSL & SASL Authentication
 
-The following example assumes a valid SSL certificate and SASL authentication using the `scram-sha-256` mechanism. Other mechanisms are also available (see [Client Configuration](Configuration.md#sasl)).
+The following example assumes a valid SSL certificate and SASL authentication using the
+`scram-sha-256` mechanism. Other mechanisms are also available (see
+[Client Configuration](Configuration.md#sasl)).
 
 ```javascript
 const fs = require('fs')
@@ -82,7 +85,7 @@ const kafka = new Kafka({
   brokers: [`${host}:9094`],
   clientId: 'example-consumer',
   ssl: {
-    rejectUnauthorized: true
+    rejectUnauthorized: true,
   },
   sasl: {
     mechanism: 'scram-sha-256',

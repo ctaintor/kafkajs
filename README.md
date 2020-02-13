@@ -23,7 +23,8 @@ KafkaJS is battle-tested and ready for production.
 - Admin client
 
 _Read something on the website that didn't work with the latest stable version?_  
-[Check the pre-release versions](https://kafka.js.org/docs/pre-releases) - the website is updated on every merge to master.
+[Check the pre-release versions](https://kafka.js.org/docs/pre-releases) - the website is updated on
+every merge to master.
 
 ## <a name="getting-started"></a> Getting Started
 
@@ -37,7 +38,7 @@ const { Kafka } = require('kafkajs')
 
 const kafka = new Kafka({
   clientId: 'my-app',
-  brokers: ['kafka1:9092', 'kafka2:9092']
+  brokers: ['kafka1:9092', 'kafka2:9092'],
 })
 
 const producer = kafka.producer()
@@ -48,9 +49,7 @@ const run = async () => {
   await producer.connect()
   await producer.send({
     topic: 'test-topic',
-    messages: [
-      { value: 'Hello KafkaJS user!' },
-    ],
+    messages: [{ value: 'Hello KafkaJS user!' }],
   })
 
   // Consuming
@@ -83,19 +82,31 @@ Learn more about using [KafkaJS on the official site!](https://kafka.js.org)
 
 ## <a name="contributing"></a> Contributing
 
-KafkaJS is an open-source project where development takes place in the open on GitHub. Although the project is maintained by a small group of dedicated volunteers, we are grateful to the community for bugfixes, feature development and other contributions.
+KafkaJS is an open-source project where development takes place in the open on GitHub. Although the
+project is maintained by a small group of dedicated volunteers, we are grateful to the community for
+bugfixes, feature development and other contributions.
 
-See [Developing KafkaJS](https://kafka.js.org/docs/contribution-guide) for information on how to run and develop KafkaJS.
+See [Developing KafkaJS](https://kafka.js.org/docs/contribution-guide) for information on how to run
+and develop KafkaJS.
 
 ### <a name="help-wanted"></a> Help wanted 🤝
 
-We welcome contributions to KafkaJS, but we also want to see a thriving third-party ecosystem. If you would like to create an open-source project that builds on top of KafkaJS, [please get in touch](https://kafkajs-slackin.herokuapp.com/) and we'd be happy to provide feedback and support.
+We welcome contributions to KafkaJS, but we also want to see a thriving third-party ecosystem. If
+you would like to create an open-source project that builds on top of KafkaJS,
+[please get in touch](https://kafkajs-slackin.herokuapp.com/) and we'd be happy to provide feedback
+and support.
 
 Here are some projects that we would like to build, but haven't yet been able to prioritize:
 
-* [Dead Letter Queue](https://eng.uber.com/reliable-reprocessing/) - Automatically reprocess messages
-* [Schema Registry](https://www.confluent.io/confluent-schema-registry/) - ~~Seamless integration with the schema registry to encode and decode AVRO~~ **[Now available!](https://www.npmjs.com/package/@kafkajs/confluent-schema-registry)** thanks to [@erikengervall](https://github.com/erikengervall)
-* [Metrics](https://prometheus.io/) - Integrate with the [instrumentation events](https://kafka.js.org/docs/instrumentation-events) to expose commonly used metrics
+- [Dead Letter Queue](https://eng.uber.com/reliable-reprocessing/) - Automatically reprocess
+  messages
+- [Schema Registry](https://www.confluent.io/confluent-schema-registry/) - ~~Seamless integration
+  with the schema registry to encode and decode AVRO~~
+  **[Now available!](https://www.npmjs.com/package/@kafkajs/confluent-schema-registry)** thanks to
+  [@erikengervall](https://github.com/erikengervall)
+- [Metrics](https://prometheus.io/) - Integrate with the
+  [instrumentation events](https://kafka.js.org/docs/instrumentation-events) to expose commonly used
+  metrics
 
 ## Acknowledgements
 

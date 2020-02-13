@@ -20,7 +20,8 @@ Take a look at [Retry](Configuration.md#default-retry) for more information.
 
 ## <a name="create-topics"></a> Create topics
 
-`createTopics` will resolve to `true` if the topic was created successfully or `false` if it already exists. The method will throw exceptions in case of errors.
+`createTopics` will resolve to `true` if the topic was created successfully or `false` if it already
+exists. The method will throw exceptions in case of errors.
 
 ```javascript
 await admin.createTopics({
@@ -59,7 +60,8 @@ await admin.deleteTopics({
 })
 ```
 
-Topic deletion is disabled by default in Apache Kafka versions prior to `1.0.0`. To enable it set the server config.
+Topic deletion is disabled by default in Apache Kafka versions prior to `1.0.0`. To enable it set
+the server config.
 
 ```yml
 delete.topic.enable=true
@@ -142,8 +144,9 @@ await admin.fetchOffsets({ groupId, topic })
 
 ## <a name="reset-offsets"></a> Reset consumer group offsets
 
-`resetOffsets` resets the consumer group offset to the earliest or latest offset (latest by default).
-The consumer group must have no running instances when performing the reset. Otherwise, the command will be rejected.
+`resetOffsets` resets the consumer group offset to the earliest or latest offset (latest by
+default). The consumer group must have no running instances when performing the reset. Otherwise,
+the command will be rejected.
 
 ```javascript
 await admin.resetOffsets({ groupId, topic }) // latest by default
@@ -175,12 +178,9 @@ Example:
 
 ```javascript
 await admin.setOffsets({
-    groupId: 'my-consumer-group',
-    topic: 'custom-topic',
-    partitions: [
-        { partition: 0, offset: '35' },
-        { partition: 3, offset: '19' },
-    ]
+  groupId: 'my-consumer-group',
+  topic: 'custom-topic',
+  partitions: [{ partition: 0, offset: '35' }, { partition: 3, offset: '19' }],
 })
 ```
 
@@ -215,9 +215,9 @@ await admin.describeConfigs({
   resources: [
     {
       type: ResourceTypes.TOPIC,
-      name: 'topic-name'
-    }
-  ]
+      name: 'topic-name',
+    },
+  ],
 })
 ```
 
@@ -232,13 +232,15 @@ await admin.describeConfigs({
     {
       type: ResourceTypes.TOPIC,
       name: 'topic-name',
-      configNames: ['cleanup.policy']
-    }
-  ]
+      configNames: ['cleanup.policy'],
+    },
+  ],
 })
 ```
 
-Take a look at [resourceTypes](https://github.com/tulios/kafkajs/blob/master/src/protocol/resourceTypes.js) for a complete list of resources.
+Take a look at
+[resourceTypes](https://github.com/tulios/kafkajs/blob/master/src/protocol/resourceTypes.js) for a
+complete list of resources.
 
 Example response:
 
@@ -299,15 +301,19 @@ Example:
 const { ResourceTypes } = require('kafkajs')
 
 await admin.alterConfigs({
-    resources: [{
-        type: ResourceTypes.TOPIC,
-        name: 'topic-name',
-        configEntries: [{ name: 'cleanup.policy', value: 'compact' }]
-    }]
+  resources: [
+    {
+      type: ResourceTypes.TOPIC,
+      name: 'topic-name',
+      configEntries: [{ name: 'cleanup.policy', value: 'compact' }],
+    },
+  ],
 })
 ```
 
-Take a look at [resourceTypes](https://github.com/tulios/kafkajs/blob/master/src/protocol/resourceTypes.js) for a complete list of resources.
+Take a look at
+[resourceTypes](https://github.com/tulios/kafkajs/blob/master/src/protocol/resourceTypes.js) for a
+complete list of resources.
 
 Example response:
 

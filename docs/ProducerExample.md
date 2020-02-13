@@ -3,7 +3,8 @@ id: producer-example
 title: Producer
 ---
 
-The following example assumes that you are using the local Kafka configuration described in [Running Kafka in Development](DockerLocal.md).
+The following example assumes that you are using the local Kafka configuration described in
+[Running Kafka in Development](DockerLocal.md).
 
 ```javascript
 const fs = require('fs')

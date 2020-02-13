@@ -3,13 +3,18 @@ id: development-environment
 title: Development Environment
 ---
 
-When developing KafkaJS, we run a Kafka cluster in a similar way to what is described in [Running Kafka in Development](DockerLocal.md), using [`docker`](https://docs.docker.com/) and [`docker-compose`](https://docs.docker.com/compose/install/). Before you proceed, make sure that you have both `docker` and `docker-compose` available.
+When developing KafkaJS, we run a Kafka cluster in a similar way to what is described in
+[Running Kafka in Development](DockerLocal.md), using [`docker`](https://docs.docker.com/) and
+[`docker-compose`](https://docs.docker.com/compose/install/). Before you proceed, make sure that you
+have both `docker` and `docker-compose` available.
 
-KafkaJS is assuming that [`yarn`](https://yarnpkg.com/) is available globally, so if you haven't installed it yet: `npm install --global yarn`.
+KafkaJS is assuming that [`yarn`](https://yarnpkg.com/) is available globally, so if you haven't
+installed it yet: `npm install --global yarn`.
 
 ## Running Kafka
 
-For testing KafkaJS we use a multi-broker Kafka cluster as well as Zookeeper for authentication. To start the cluster and generate credentials, run the following from the root of the repository:
+For testing KafkaJS we use a multi-broker Kafka cluster as well as Zookeeper for authentication. To
+start the cluster and generate credentials, run the following from the root of the repository:
 
 ```sh
 # This will run a Kafka cluster configured with your current IP
@@ -17,13 +22,17 @@ For testing KafkaJS we use a multi-broker Kafka cluster as well as Zookeeper for
 ./scripts/createScramCredentials.sh
 ```
 
-This boots the Kafka cluster using the default docker-compose.yml file described in [scripts/dockerComposeUp.sh](https://github.com/tulios/kafkajs/blob/master/scripts/dockerComposeUp.sh). If you want to run a different version of Kafka, specify a different compose file using the `COMPOSE_FILE` environment variable:
+This boots the Kafka cluster using the default docker-compose.yml file described in
+[scripts/dockerComposeUp.sh](https://github.com/tulios/kafkajs/blob/master/scripts/dockerComposeUp.sh).
+If you want to run a different version of Kafka, specify a different compose file using the
+`COMPOSE_FILE` environment variable:
 
 ```sh
 COMPOSE_FILE="docker-compose.2_3.yml" ./scripts/dockerComposeUp.sh
 ```
 
-If you run `docker-compose -f docker-compose.2_3.yml ps` (specify whichever compose file you used in the step above), you should see something like:
+If you run `docker-compose -f docker-compose.2_3.yml ps` (specify whichever compose file you used in
+the step above), you should see something like:
 
 ```sh
 $ docker-compose -f docker-compose.2_3.yml ps
@@ -36,7 +45,8 @@ kafkajs_kafka3_1   start-kafka.sh                   Up      0.0.0.0:9098->9098/t
 kafkajs_zk_1       /bin/sh -c /usr/sbin/sshd  ...   Up      0.0.0.0:2181->2181/tcp, 22/tcp, 2888/tcp, 3888/tcp
 ```
 
-The user credentials are listed in [scripts/createScramCredentials.sh](https://github.com/tulios/kafkajs/blob/master/scripts/createScramCredentials.sh).
+The user credentials are listed in
+[scripts/createScramCredentials.sh](https://github.com/tulios/kafkajs/blob/master/scripts/createScramCredentials.sh).
 
 You should now be able to connect to your cluster as such:
 

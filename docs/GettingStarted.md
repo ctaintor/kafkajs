@@ -23,7 +23,7 @@ const { Kafka } = require('kafkajs')
 
 const kafka = new Kafka({
   clientId: 'my-app',
-  brokers: ['kafka1:9092', 'kafka2:9092']
+  brokers: ['kafka1:9092', 'kafka2:9092'],
 })
 ```
 
@@ -35,15 +35,14 @@ const producer = kafka.producer()
 await producer.connect()
 await producer.send({
   topic: 'test-topic',
-  messages: [
-    { value: 'Hello KafkaJS user!' },
-  ],
+  messages: [{ value: 'Hello KafkaJS user!' }],
 })
 
 await producer.disconnect()
 ```
 
-Finally, to verify that our message has indeed been produced to the topic, let's create a consumer to consume our message:
+Finally, to verify that our message has indeed been produced to the topic, let's create a consumer
+to consume our message:
 
 ```javascript
 const consumer = kafka.consumer({ groupId: 'test-group' })
@@ -63,4 +62,3 @@ await consumer.run({
 **Congratulations, you just produced and consumed your first Kafka message!**
 
 > Run into issues? Be sure to take a look at the [FAQ](FAQ.md).
-
